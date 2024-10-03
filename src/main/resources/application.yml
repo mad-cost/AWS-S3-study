@@ -1,3 +1,14 @@
 spring:
   application:
     name: s3_test
+  cloud:
+    aws:
+      credentials:
+        access-key: ${ACCESS_KEY}
+        secret-key: ${SECRET_ACCESS_KEY}
+      region:
+        static: ap-northeast-2 # Asia Pacific (Seoul)
+
+s3:
+  bucket-name: bucket-pra
+  path: images
