@@ -9,6 +9,12 @@ spring:
       region:
         static: ap-northeast-2 # Asia Pacific (Seoul)
 
+  datasource:
+    url: jdbc:mysql://localhost:3306/S3-test
+    username: root
+    password: seoght3658
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
 s3:
   bucket-name: bucket-pra
   path: images
