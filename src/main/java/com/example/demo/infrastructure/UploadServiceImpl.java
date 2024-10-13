@@ -3,6 +3,7 @@ package com.example.demo.infrastructure;
 import com.example.demo.application.UploadService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.core.sync.RequestBody;
@@ -11,6 +12,7 @@ import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.io.InputStream;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class UploadServiceImpl implements UploadService {
@@ -28,7 +30,8 @@ public class UploadServiceImpl implements UploadService {
   // S3에 파일 업로드
   @Override
   @SneakyThrows /// 1. Exception 제거해주는 애너테이션
-  public String uploadImage(MultipartFile uploadFile) {
+  @Async
+  public void uploadImage(MultipartFile uploadFile) {
     // 파일의 크기를 확인한 후, 제한된 크기(5MB)보다 큰 경우 예외 발생
     final long MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
@@ -51,7 +54,6 @@ public class UploadServiceImpl implements UploadService {
     );
 
     s3Client.putObject(request, content);
-    return uploadUrl;
   }
 
   // S3에서 파일 다운로드

@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 public interface UploadService {
   // 업로드
-  String uploadImage(MultipartFile uploadFile);
+  void uploadImage(MultipartFile uploadFile);
 
   // 다운로드
   InputStream getFile(String fileName);
