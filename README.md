@@ -8,5 +8,5 @@
 😺 Blog: https://happy-coding.tistory.com/49
 <br>
 
-* S3 S3 이미지 사이즈 제한하기, API 응답 속도 향상시키기 <br>
+* S3 이미지 사이즈 제한하기, API 응답 속도 향상시키기 <br>
 😺 Blog: https://happy-coding.tistory.com/51
