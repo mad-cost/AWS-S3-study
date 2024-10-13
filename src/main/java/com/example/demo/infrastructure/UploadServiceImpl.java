@@ -29,6 +29,14 @@ public class UploadServiceImpl implements UploadService {
   @Override
   @SneakyThrows /// 1. Exception 제거해주는 애너테이션
   public String uploadImage(MultipartFile uploadFile) {
+    // 파일의 크기를 확인한 후, 제한된 크기(5MB)보다 큰 경우 예외 발생
+    final long MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
+    // 파일 크기 체크
+    if (uploadFile.getSize() > MAX_FILE_SIZE) {
+      throw new Exception(MAX_FILE_SIZE / (1024 * 1024) + "MB 이상의 파일은 업로드 할 수 없습니다.");
+    }
+
     // images/{파일명} 형태로 저장
     //String uploadUrl = path + "/" + uploadFile.getOriginalFilename(); -> 중복 코드 제거
     String uploadUrl = getS3UploadUrl(uploadFile.getOriginalFilename());
