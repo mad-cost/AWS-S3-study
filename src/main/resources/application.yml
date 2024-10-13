@@ -18,3 +18,10 @@ spring:
 s3:
   bucket-name: bucket-pra
   path: images
+
+  # 업로드 시 이미지 사이즈 제한
+#spring:
+#  servlet:
+#    multipart:
+#      max-file-size: 10MB # 최대 파일 사이즈
+#      max-request-size: 10MB # 최대 요청 사이즈
